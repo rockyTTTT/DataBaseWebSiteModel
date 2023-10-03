@@ -82,11 +82,7 @@
       </el-dropdown>
 
       <!--Search builder -->
-      <div
-        class="builder-details"
-        id="Anal canal cancer"
-        :style="{ display:  displayList[0].value == 'false' ? 'block' : 'none'}"
-      >
+      <div class="builder-details" id="Cancer" :style="{display:showCancer?'block':'none'}">
         <span class="select-label">Cancer</span>
         <el-input
           v-model="input"
@@ -138,22 +134,12 @@
             </el-dropdown>
           </span>
         </el-input>
-        <el-tooltip
-          class="item"
-          effect="dark"
-          content="Remove this line from builder"
-          placement="top"
-        >
-          <el-button
-            type="info"
-            icon="el-icon-minus"
-            circle
-            class="delete_button"
-            size="mini"
-            @click="deleteBuilder($event)"
-          ></el-button>
+        <el-tooltip class="item" effect="dark" content="Remove this line from builder" placement="top">
+        <el-button type="info" icon="el-icon-minus" circle class="delete_button" size="mini" @click="deleteBuilder"></el-button>
         </el-tooltip>
       </div>
+
+
     </el-card>
     <app-footer></app-footer>
   </div>
@@ -169,15 +155,7 @@ export default {
       input: "",
       inputPlaceHolder: "Please select cancer(s)",
       dropdownTrigger: "click",
-      displayList: [
-        { value: "false", label: "Anal canal cancer" },
-        { value: "false", label: "Bladder cancer" },
-        { value: "false", label: "Bile duct cancer" },
-        { value: "false", label: "Breast cancer" },
-        { value: "false", label: "Colon cancer" },
-        { value: "false", label: "Gastric cancer" },
-        { value: "false", label: "Kidney cancer" },
-      ],
+      showCancer: true,
       list: [
         { value: "Anal canal cancer", label: "Anal canal cancer" },
         { value: "Bladder cancer", label: "Bladder cancer" },
@@ -271,25 +249,8 @@ export default {
         this.inputPlaceHolder = "Please select cancer(s)";
       }
     },
-
-    deleteBuilder(e) {
-      console.log("触发deleteBuilder方法");
-      // 获取当前元素的ID
-      let id = e.currentTarget.parentElement.id;
-      // 触发自定义事件，将showCancer设为false
-      this.displayList.forEach((element) => {
-        console.log("element.label", element.label);
-        console.log("id", id);
-        console.log('compare', element.label == id);
-        if (element.label == id) {
-          console.log('enter');
-          element.value = "true";
-        }
-      });
-    },
   },
   mounted() {},
-
   components: {
     AppFooter,
   },
@@ -455,7 +416,7 @@ export default {
   margin-left: 5px;
   margin-top: 2.5px;
 }
-.delete_button {
+.delete_button{
   margin-right: 40px;
   margin-top: 6px;
   float: right;

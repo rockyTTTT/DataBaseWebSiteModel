@@ -85,7 +85,7 @@
       <div
         class="builder-details"
         id="Anal canal cancer"
-        :style="{ display:  displayList[0].value == 'false' ? 'block' : 'none'}"
+        :style="{ display: displayList[0].value ? 'block' : 'none' }"
       >
         <span class="select-label">Cancer</span>
         <el-input
@@ -282,14 +282,13 @@ export default {
         console.log("id", id);
         console.log('compare', element.label == id);
         if (element.label == id) {
-          console.log('enter');
           element.value = "true";
+          break;
         }
       });
     },
   },
   mounted() {},
-
   components: {
     AppFooter,
   },

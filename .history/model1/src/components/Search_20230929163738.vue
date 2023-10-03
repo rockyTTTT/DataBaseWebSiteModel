@@ -84,8 +84,8 @@
       <!--Search builder -->
       <div
         class="builder-details"
-        id="Anal canal cancer"
-        :style="{ display:  displayList[0].value == 'false' ? 'block' : 'none'}"
+        id="Cancer"
+        :style="{ display: displayList[0].value ? 'block' : 'none' }"
       >
         <span class="select-label">Cancer</span>
         <el-input
@@ -169,24 +169,24 @@ export default {
       input: "",
       inputPlaceHolder: "Please select cancer(s)",
       dropdownTrigger: "click",
-      displayList: [
-        { value: "false", label: "Anal canal cancer" },
-        { value: "false", label: "Bladder cancer" },
-        { value: "false", label: "Bile duct cancer" },
-        { value: "false", label: "Breast cancer" },
-        { value: "false", label: "Colon cancer" },
-        { value: "false", label: "Gastric cancer" },
-        { value: "false", label: "Kidney cancer" },
+      displayList:[
+        {value:"false",label:"Cancer"},
+        {value:"false",label:"Bladder cancer"},
+        {value:"false",label:"Bile duct cancer"},
+        {value:"false",label:"Breast cancer"},
+        {value:"false",label:"Colon cancer"},
+        {value:"false",label:"Gastric cancer"},
+        {value:"false",label:"Kidney cancer"},
       ],
-      list: [
-        { value: "Anal canal cancer", label: "Anal canal cancer" },
+      list:[
+        {value:"Anal canal cancer",label:"Cancer"},
         { value: "Bladder cancer", label: "Bladder cancer" },
-        { value: "Bile duct cancer", label: "Bile duct cancer" },
-        { value: "Breast cancer", label: "Breast cancer" },
-        { value: "Colon cancer", label: "Colon cancer" },
-        { value: "Gastric cancer", label: "Gastric cancer" },
-        { value: "Kidney cancer", label: "Kidney cancer" },
-      ],
+        {value: "Bile duct cancer", label: "Bile duct cancer" },
+        {value: "Breast cancer", label: "Breast cancer" },
+        {value: "Colon cancer", label: "Colon cancer" },
+        {value: "Gastric cancer", label: "Gastric cancer" },
+        {value: "Kidney cancer", label: "Kidney cancer" },
+      ] ,
       selected: [],
       inputHeight: 40,
     };
@@ -273,23 +273,16 @@ export default {
     },
 
     deleteBuilder(e) {
-      console.log("触发deleteBuilder方法");
+      console.log('触发deleteBuilder方法');
       // 获取当前元素的ID
       let id = e.currentTarget.parentElement.id;
+      console.log('id',id);
       // 触发自定义事件，将showCancer设为false
-      this.displayList.forEach((element) => {
-        console.log("element.label", element.label);
-        console.log("id", id);
-        console.log('compare', element.label == id);
-        if (element.label == id) {
-          console.log('enter');
-          element.value = "true";
-        }
-      });
+      this.showsInput[label]
     },
+
   },
   mounted() {},
-
   components: {
     AppFooter,
   },

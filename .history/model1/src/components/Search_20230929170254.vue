@@ -85,7 +85,7 @@
       <div
         class="builder-details"
         id="Anal canal cancer"
-        :style="{ display:  displayList[0].value == 'false' ? 'block' : 'none'}"
+        :style="{ display:  }"
       >
         <span class="select-label">Cancer</span>
         <el-input

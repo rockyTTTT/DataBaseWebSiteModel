@@ -85,7 +85,7 @@
       <div
         class="builder-details"
         id="Anal canal cancer"
-        :style="{ display:  displayList[0].value == 'false' ? 'block' : 'none'}"
+        :style="{ display: displayList[0].value ? 'block' : 'none' }"
       >
         <span class="select-label">Cancer</span>
         <el-input
@@ -170,7 +170,7 @@ export default {
       inputPlaceHolder: "Please select cancer(s)",
       dropdownTrigger: "click",
       displayList: [
-        { value: "false", label: "Anal canal cancer" },
+        { value: "true", label: "Anal canal cancer" },
         { value: "false", label: "Bladder cancer" },
         { value: "false", label: "Bile duct cancer" },
         { value: "false", label: "Breast cancer" },
@@ -286,10 +286,13 @@ export default {
           element.value = "true";
         }
       });
+      this.displayList.forEach(element => {
+        console.log('element value',element.value);
+        console.log('element label',element.label);
+      });
     },
   },
   mounted() {},
-
   components: {
     AppFooter,
   },
